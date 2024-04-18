@@ -20,8 +20,21 @@ function getPageDetails() {
         deviceType: getDeviceType(),
         orientation: getOrientation(),
         touchSupport: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
-        referrerDetails: getReferrerDetails()
+        referrerDetails: getReferrerDetails(),
+        queryParams: getUrlParameters() // Capturing all URL parameters
+
     };
+}
+
+// Function to parse all URL query parameters
+function getUrlParameters() {
+    const params = {};
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    for (const [key, value] of urlParams) {
+        params[key] = value;
+    }
+    return params;
 }
 
 // Function to get the device type (mobile, tablet, desktop)
@@ -288,13 +301,3 @@ function debounce(func, wait) {
   };
 }
 
-function captureScroll() {
-  window.addEventListener('scroll', debounce(() => {
-    transmitEventData({
-      type: 'scroll',
-      timestamp: new Date().toISOString(),
-      pageDetails: getPageDetails(),
-      scrollPosition: { x: window.scrollX, y: window.scrollY }
-    });
-  }, 200));
-}
