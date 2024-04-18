@@ -277,3 +277,24 @@ function throttle(func, wait) {
         }
     };
 }
+
+function debounce(func, wait) {
+  let timeout;
+  return function() {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
+}
+
+function captureScroll() {
+  window.addEventListener('scroll', debounce(() => {
+    transmitEventData({
+      type: 'scroll',
+      timestamp: new Date().toISOString(),
+      pageDetails: getPageDetails(),
+      scrollPosition: { x: window.scrollX, y: window.scrollY }
+    });
+  }, 200));
+}
