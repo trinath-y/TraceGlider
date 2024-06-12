@@ -167,7 +167,8 @@ function handleEvent(event) {
         altKey: event.altKey,
         ctrlKey: event.ctrlKey,
         shiftKey: event.shiftKey,
-        metaKey: event.metaKey
+        metaKey: event.metaKey,
+        trackingId: getTrackingId()
     };
 
     if (event.target.parentElement) {
@@ -176,6 +177,17 @@ function handleEvent(event) {
 
     transmitEventData(eventData);
 }
+function getTrackingId() {
+  const cookies = document.cookie.split('; ');
+  for (let i = 0; i < cookies.length; i++) {
+    const parts = cookies[i].split('=');
+    if (parts[0] === 'tracking_id') {
+      return parts[1];
+    }
+  }
+  return '';
+}
+
 
 // Function to transmit navigation data
 function transmitNavigationData(data) {
@@ -183,7 +195,8 @@ function transmitNavigationData(data) {
     fetch('/api/navigation', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+      'X-Tracking-ID': getTrackingId()
         },
         body: JSON.stringify(data)
     }).catch(error => console.error('Error transmitting data:', error));
@@ -195,7 +208,8 @@ function transmitEventData(eventData) {
     fetch('/api/events', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+      'X-Tracking-ID': getTrackingId()
         },
         body: JSON.stringify(eventData)
     }).catch(error => console.error('Error transmitting data:', error));
