@@ -12,6 +12,8 @@ TraceGlider is designed to provide website owners and developers with detailed i
 
 ## Getting Started
 Instructions on how to integrate TraceGlider into your website, including code snippets and configuration options.
+Replace 'https://your-fastapi-server.com' with the actual URL of your Server side instance so that tracking information is sent.
+Add the following line inside the DOMContentLoaded event listener to set the tracking cookie when the page loads:
 
 ## Roadmap
 - **Short-Term**: Improve error handling and expand privacy controls.

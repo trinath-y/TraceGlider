@@ -1,3 +1,20 @@
+
+function setTrackingCookie() {
+  fetch('https://your-fastapi-server.com/api/tracking-cookie', {
+    method: 'GET',
+    credentials: 'include'
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Tracking cookie set:', data.tracking_id);
+  })
+  .catch(error => {
+    console.error('Error setting tracking cookie:', error);
+  });
+}
+
+
+
 // Function to capture full URL along with the referrer
 function getPageDetails() {
     return {
@@ -271,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener("change", handleEvent);
     document.addEventListener("keydown", handleEvent);
     document.addEventListener("mousemove", throttle(handleEvent, 1000)); // Throttle mousemove events
+    setTrackingCookie();
     captureNavigation(); // Set up navigation tracking
     captureBatteryLevel(); // Capture battery level
     captureGeolocation(); // Capture geolocation
