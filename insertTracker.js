@@ -1,4 +1,3 @@
-
 function setTrackingCookie() {
   fetch('https://your-fastapi-server.com/api/tracking-cookie', {
     method: 'GET',
@@ -12,8 +11,6 @@ function setTrackingCookie() {
     console.error('Error setting tracking cookie:', error);
   });
 }
-
-
 
 // Function to capture full URL along with the referrer
 function getPageDetails() {
