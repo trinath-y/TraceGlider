@@ -1,7 +1,7 @@
 # TraceGlider: Open-Source Tracker
 
 ## Introduction
-TraceGlider is designed to provide website owners and developers with detailed insights into user behavior without compromising on privacy. This library is fully open-source and can be integrated into any web platform.
+TraceGlider is my version of a low cost , privacy focused implementation of server side tracking so that the data can be stored in S3 and subsequently used for any analytic platforms. 
 
 ## Features
 - Real-time interaction tracking
