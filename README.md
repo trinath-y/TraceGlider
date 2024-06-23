@@ -4,17 +4,15 @@
 TraceGlider is my version of a low cost , privacy focused implementation of server side tracking so that the data can be stored in S3 and subsequently used for any analytic platforms.
 
 ## Why TraceGlider?
-I strongly believe most of the web analytics software is built as a blackbox where most of the pieces are not needed, so instead of building yet another web analytic software- i decided to build modular componenets with leveraging the pricing economics of cloud and you can pick and choose which component you want. In a nutshell you get:
+I strongly believe most of the web analytics software is built as a blackbox where most of the pieces are not needed for all companies, so instead of building yet another web analytic software- i decided to build modular components by leveraging the pricing economics of cloud so that you can pick and choose which component you want. In a nutshell you get:
 - Cost-Effective: Low operational costs with serverless infrastructure and scalable cloud storage.
 - Lightweight and Fast: Minimal impact on website performance with simple integration.
 - Full Control: Own your data with customizable tracking and transparent pricing.
 ## Features
-- Real-time interaction tracking
-- Detailed navigation analysis
-- Extensive device and environment profiling
-- Throttled and debounced event handling for performance optimization
-- Compliance with global privacy standards
-
+- Tagless tracking using Javascript 
+- Enable server side tracking with Lambda  
+- Do what you want after data is stored in Object store S3- you can use Athena or other platform for analytics or setup low cost monitoring
+  
 ## Getting Started
 Please include the insertTracker.js in the website so that it can be sent to the FastAPI server side tracker which will insert the data directly to S3
 
